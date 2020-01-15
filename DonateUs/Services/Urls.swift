@@ -7,8 +7,8 @@
 //
 import Foundation
 struct EndPoints {
-    static let BASE_URL: String = "http://gojek-contacts-app.herokuapp.com"
-    static let GET_CONTACTS: String = BASE_URL + "/contacts.json"
+    static let BASE_URL: String = "https://virtserver.swaggerhub.com/chakritw/tamboon-api/1.0.0"
+    static let GET_CONTACTS: String = "/charities"
     static func returnContactDetailUrl(id: Int) -> String {
         return BASE_URL + "/contacts/" + "\(id)" + ".json"
     }

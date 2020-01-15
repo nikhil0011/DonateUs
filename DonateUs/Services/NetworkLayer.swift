@@ -86,23 +86,20 @@ class NetworkLayer {
         guard let urlResponse = response as? HTTPURLResponse else { return false }
         return isSuccessCode(urlResponse.statusCode)
     }
-}
-class ImageLoader: ObservableObject {
-    var imageData = Data()
-    init(imageUrl: String) {
-        guard let url = URL(string: EndPoints.BASE_URL + imageUrl) else {
-            print("image data")
-            return
-            
-        }
+    func loadImageData(imageUrl: String, successHandler: @escaping(Data) -> Void, errorHandler: @escaping(String) -> Void) {
+        guard let url = URL(string: imageUrl) else { return }
         URLSession.shared.dataTask(with: url) { (data, resp, error)  in
             if let err = error {
-                debugPrint("Error in Fetching GET_CONTACTS Data", err)
+                debugPrint("Error in Fetching Image Data", err)
+                errorHandler(err.localizedDescription)
                 return
             }
-            guard let loadData = data else { return }
+            guard let imageData = data else {
+                errorHandler(NetworkLayer.genericError)
+                return
+            }
             DispatchQueue.main.async {
-                self.imageData = loadData
+                successHandler(imageData)
             }
         }.resume()
     }
