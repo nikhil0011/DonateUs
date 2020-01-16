@@ -23,7 +23,7 @@ struct Organisation: Codable {
         case logoURL = "logo_url"
     }
 }
-struct GenericResponse {
+struct GenericResponse: Codable {
     let status: Int
     let success: Bool
 }
