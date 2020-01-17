@@ -5,7 +5,6 @@
 //  Created by Nikhil on 15/01/20.
 //  Copyright © 2020 Nikhil. All rights reserved.
 //
-
 import UIKit
 fileprivate let stdPadding: UIEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
 class DonationViewController: UIViewController {
@@ -37,18 +36,16 @@ class DonationViewController: UIViewController {
         button.layer.cornerRadius = 4
         button.layer.backgroundColor = ColorPalette.primaryColor.cgColor
         button.isUserInteractionEnabled = true
-        button.addTarget(self, action: #selector(submitDonationRequest), for: .touchUpInside)
         return button
     }()
     var donationViewModel = DonationViewModel()
     lazy var creditCardForm = CreditCardView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        donateButton.addTarget(self, action: #selector(submitDonationRequest), for: .touchUpInside)
         setupView()
     }
-    @objc func intiateDonate() {
-        
-    }
+    @objc func intiateDonate() { }
     func setupView() {
         self.view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
         self.view.addSubview(amount)
@@ -61,13 +58,23 @@ class DonationViewController: UIViewController {
         donateButton.anchor(top: creditCardForm.bottomAnchor, leading: frame.leadingAnchor, bottom: nil, trailing: frame.trailingAnchor, padding: stdPadding, size: .init(width: 0, height: 45))
     }
     @objc func submitDonationRequest() {
+        ActivityIndicator.shared.showProgressView(self.view)
         donationViewModel.submitDonation(body: ["name": "", "token": "", "amount": ""])
         observeDonationViewModel()
     }
     func observeDonationViewModel() {
-        donationViewModel.bindableDontionForm.bind { (response, error) in
-            debugPrint("Response\(String(describing: response))")
-            debugPrint("ERROR \(error)")
+        donationViewModel.bindableDontionForm.bind { [weak self] (response, error) in
+            guard let reference = self else { return }
+            DispatchQueue.main.async {
+                ActivityIndicator.shared.hideProgressView()
+            }
+            if let err = error {
+                debugPrint("Error in Fetching Data From Chairty API \(err)")
+                return
+            }
+            DispatchQueue.main.async {
+                reference.navigationController?.pushViewController(PaymentSuccessViewController(), animated: true)
+            }
         }
     }
 }

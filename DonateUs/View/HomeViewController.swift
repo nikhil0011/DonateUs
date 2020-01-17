@@ -19,8 +19,12 @@ class HomeViewController: UICollectionViewController {
         observerCharityViewModel()
     }
     func observerCharityViewModel() {
+        ActivityIndicator.shared.showProgressView(self.view)
         viewModel.bindableCharityList.bind { [weak self] (response, error) in
             guard let reference = self else { return }
+            DispatchQueue.main.async {
+                ActivityIndicator.shared.hideProgressView()
+            }
             if let err = error {
                 debugPrint("Error in Fetching Data From Chairty API \(err)")
                 return

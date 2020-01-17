@@ -26,9 +26,9 @@ struct CharityCellViewModel {
     let data: Organisation
 }
 class DonationViewModel {
-    var bindableDontionForm = Bindable<GenericResponse, String>()
+    var bindableDontionForm = Bindable<DonationData, String>()
     // Do any additional setup after loading the view.
-    lazy var successHandler: (GenericResponse) -> Void = { (data) in
+    lazy var successHandler: (DonationData) -> Void = { (data) in
         print(data)
         self.bindableDontionForm.value = data
     }

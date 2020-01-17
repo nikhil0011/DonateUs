@@ -15,7 +15,7 @@ class BorderedTextField: UITextField {
         self.textAlignment = .left
     }
     override func draw(_ rect: CGRect) {
-        super.draw(rect.offsetBy(dx: 32, dy: 6))
+        super.draw(rect.offsetBy(dx: 32, dy: 12))
         addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
     }
     override func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -27,4 +27,7 @@ class BorderedTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+//  override var intrinsicContentSize: CGSize {
+//      return .init(width: self.frame.width, height: 35)
+//  }
 }

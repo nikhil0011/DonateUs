@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31518D9A23D0915C00302E30 /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31518D9923D0915C00302E30 /* PaymentSuccessViewController.swift */; };
+		31518D9C23D0DEA700302E30 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31518D9B23D0DEA700302E30 /* ActivityIndicator.swift */; };
 		31D249FB23CE0FF000485C11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D249FA23CE0FF000485C11 /* AppDelegate.swift */; };
 		31D249FD23CE0FF000485C11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D249FC23CE0FF000485C11 /* SceneDelegate.swift */; };
 		31D249FF23CE0FF000485C11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D249FE23CE0FF000485C11 /* HomeViewController.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		31518D9923D0915C00302E30 /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
+		31518D9B23D0DEA700302E30 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		31D249F723CE0FF000485C11 /* DonateUs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonateUs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D249FA23CE0FF000485C11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31D249FC23CE0FF000485C11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				31D24A3023CE104500485C11 /* ColorPallete.swift */,
 				31D24A3823CEF67100485C11 /* Bindable.swift */,
 				31D24A3E23CF2F9000485C11 /* Extensions.swift */,
+				31518D9B23D0DEA700302E30 /* ActivityIndicator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				31D24A3523CE10A000485C11 /* NetworkLayer.swift in Sources */,
 				31D24A3723CE44EC00485C11 /* CharityListViewModel.swift in Sources */,
 				31518D9A23D0915C00302E30 /* PaymentSuccessViewController.swift in Sources */,
+				31518D9C23D0DEA700302E30 /* ActivityIndicator.swift in Sources */,
 				31D24A3F23CF2F9000485C11 /* Extensions.swift in Sources */,
 				31D24A4523D04CE300485C11 /* BorderedTextField.swift in Sources */,
 				31D24A3323CE107E00485C11 /* Urls.swift in Sources */,

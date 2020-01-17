@@ -14,7 +14,7 @@ class PaymentSuccessViewController: UIViewController {
         image.backgroundColor = .white
         image.contentMode  = .scaleAspectFit
         image.layer.masksToBounds = true
-        image.image = UIImage(named: "locator_icon")
+        image.image = UIImage(named: "icons8-ok")
         return image
     }()
     let homeButton: UIButton = {
@@ -35,12 +35,15 @@ class PaymentSuccessViewController: UIViewController {
         setupView()
     }
     func setupView() {
-        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
+        self.view.backgroundColor = UIColor.white
         self.view.addSubview(statusImage)
         self.view.addSubview(homeButton)
         statusImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         statusImage.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        homeButton.anchor(top: statusImage.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: stdPadding, size: .init(width: 100, height: 50))
+        statusImage.applyCGSizeToView(size: .init(width: 100, height: 100))
+        homeButton.anchor(top: statusImage.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: stdPadding, size: .init(width: 200, height: 50))
+        homeButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+
     }
     @objc func navigateToHome() {
         self.navigationController?.popToRootViewController(animated: true)

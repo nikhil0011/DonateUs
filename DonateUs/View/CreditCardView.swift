@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class CreditCardView: UIView {
     let cardNumber: UITextField = {
         let textField = BorderedTextField()
