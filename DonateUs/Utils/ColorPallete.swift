@@ -9,7 +9,6 @@ import UIKit
 struct ColorPalette {
     static let whiteColor = UIColor.white
     static let primaryColor = hexStringToUIColor(hex: "215cec")
-    
     static func hexStringToUIColor (hex: String) -> UIColor {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if (cString.hasPrefix("#")) { cString.remove(at: cString.startIndex) }

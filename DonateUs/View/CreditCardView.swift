@@ -7,6 +7,7 @@
 //
 
 import UIKit
+fileprivate let sizeOfField: CGSize = .init(width: 0, height: 35)
 class CreditCardView: UIView {
     let cardNumber: UITextField = {
         let textField = BorderedTextField()
@@ -57,9 +58,9 @@ class CreditCardView: UIView {
         addSubview(cvvNumber)
         addSubview(expiryNumber)
         addSubview(name)
-        cardNumber.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 8, left: 4, bottom: 0, right: 4))
-        cvvNumber.anchor(top: cardNumber.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 8, left: 4, bottom: 0, right: 4))
-        expiryNumber.anchor(top: cardNumber.bottomAnchor, leading: cvvNumber.trailingAnchor, bottom: nil, trailing: nil, padding: .init(top: 8, left: 12, bottom: 0, right: 4))
-        name.anchor(top: expiryNumber.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 8, left: 4, bottom: 8, right: 4))
+        name.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 8, left: 4, bottom: 0, right: 4), size: sizeOfField)
+        cardNumber.anchor(top: name.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 8, left: 4, bottom: 0, right: 4), size: sizeOfField)
+        cvvNumber.anchor(top: cardNumber.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 8, left: 4, bottom: 8, right: 4), size: sizeOfField)
+        expiryNumber.anchor(top: cardNumber.bottomAnchor, leading: cvvNumber.trailingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 8, left: 12, bottom: 8, right: 4), size: sizeOfField)
     }
 }

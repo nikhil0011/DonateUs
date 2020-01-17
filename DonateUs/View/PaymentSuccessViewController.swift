@@ -29,6 +29,16 @@ class PaymentSuccessViewController: UIViewController {
         button.addTarget(self, action: #selector(navigateToHome), for: .touchUpInside)
         return button
     }()
+    let infoLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.textAlignment = .center
+        label.text = "Payment Successfull!"
+        label.sizeToFit()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Donation Confirmed"
@@ -38,12 +48,13 @@ class PaymentSuccessViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(statusImage)
         self.view.addSubview(homeButton)
+        self.view.addSubview(infoLabel)
         statusImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         statusImage.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         statusImage.applyCGSizeToView(size: .init(width: 100, height: 100))
-        homeButton.anchor(top: statusImage.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: stdPadding, size: .init(width: 200, height: 50))
+        infoLabel.anchor(top: statusImage.bottomAnchor, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor, padding: stdPadding)
+        homeButton.anchor(top: infoLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: stdPadding, size: .init(width: 200, height: 50))
         homeButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-
     }
     @objc func navigateToHome() {
         self.navigationController?.popToRootViewController(animated: true)
