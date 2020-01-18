@@ -10,13 +10,15 @@ import UIKit
 
 class BorderedTextField: UITextField {
     let padding: CGFloat = 8
-    init() {
+    var color: UIColor?
+    init(color: UIColor?=nil) {
         super.init(frame: .zero)
         self.textAlignment = .left
+        self.color = color
     }
     override func draw(_ rect: CGRect) {
         super.draw(rect.offsetBy(dx: 32, dy: 12))
-        addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
+        addBottomBorderWithColor(color: color ?? UIColor.lightGray, width: 0.5)
     }
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: padding, dy: 0)

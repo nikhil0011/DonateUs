@@ -75,6 +75,7 @@ class DonationViewController: UIViewController {
         donateButton.anchor(top: creditCardForm.bottomAnchor, leading: frame.leadingAnchor, bottom: nil, trailing: frame.trailingAnchor, padding: stdPadding, size: .init(width: 0, height: 45))
     }
     @objc func submitDonationRequest() {
+        guard validateForm() else { return }
         ActivityIndicator.shared.showProgressView(self.view)
         let param: [String: String] = [
             "name": creditCardForm.name.text!,
@@ -98,5 +99,22 @@ class DonationViewController: UIViewController {
                 reference.navigationController?.pushViewController(PaymentSuccessViewController(), animated: true)
             }
         }
+    }
+    func present(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+    func validateForm() -> Bool {
+        let validations = Validations()
+        guard validations.isValidText(textfield: amount), let amt = amount.text, Int(amt) ?? 0 > 0 else {
+            let alert = AlertController.showAlert(message: Constants.invalidAmt, title: Constants.alert) { (action) in }
+            self.present(alert: alert)
+            return false
+        }
+        guard validations.isValidText(textfield: creditCardForm.name) else {
+            let alert = AlertController.showAlert(message: Constants.invalidName, title: Constants.alert) { (action) in }
+            self.present(alert: alert)
+            return false
+        }
+        return true
     }
 }

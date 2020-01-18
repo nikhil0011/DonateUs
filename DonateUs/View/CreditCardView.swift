@@ -9,6 +9,7 @@
 import UIKit
 fileprivate let sizeOfField: CGSize = .init(width: 0, height: 35)
 class CreditCardView: UIView {
+    
     let cardNumber: UITextField = {
         let textField = BorderedTextField()
         textField.borderStyle = .none
@@ -108,9 +109,8 @@ extension CreditCardView: UITextFieldDelegate {
             }
             return true
         case name:
-            let validString = NSCharacterSet(charactersIn: " !@#$%^&*()_+{}[]|\"<>,.~`/:;?-=\\¥'£•¢")
             // MARK: Restrict special char in test field
-            if string.rangeOfCharacter(from: validString as CharacterSet) != nil { return false }
+            if string.rangeOfCharacter(from:  Constants.nameRegex as CharacterSet) != nil { return false }
         default: return true
         }
         return true
