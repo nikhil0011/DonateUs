@@ -93,6 +93,14 @@ class DonationViewController: UIViewController {
             }
             if let err = error {
                 debugPrint("Error in Fetching Data From Chairty API \(err)")
+                let alert = AlertController.showAlert(message: err, title: Constants.reqFailed) { _ in }
+                reference.present(alert: alert)
+                return
+            }
+            guard let data = response else { return }
+            guard data.success else {
+                let alert = AlertController.showAlert(message: data.errorMessage, title: Constants.reqFailed) { _ in }
+                reference.present(alert: alert)
                 return
             }
             DispatchQueue.main.async {
@@ -100,9 +108,7 @@ class DonationViewController: UIViewController {
             }
         }
     }
-    func present(alert: UIAlertController) {
-        self.present(alert, animated: true, completion: nil)
-    }
+    // MARK: Validating only name and amount as they are only required to be submitted to server 
     func validateForm() -> Bool {
         let validations = Validations()
         guard validations.isValidText(text: amount.text!), let amt = amount.text, Int(amt) ?? 0 > 0 else {

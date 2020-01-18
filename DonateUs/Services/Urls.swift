@@ -41,6 +41,8 @@ struct Constants {
     static let invalidAmt: String =  "Please Enter Correct Amount\n(Greater Than 0)"
     static let invalidName: String = "Please Enter Cardholders Name"
     static let alert: String = "Alert"
+    static let reqFailed: String = "Request Failed"
+    static let noDataInList: String = "Currently, No Data Available\nPlease try agian later."
     static let successMsg: NSMutableAttributedString = returnAttributedText(string1: "Payment Successful", font1: .boldSystemFont(ofSize: 16), string2: "\n A email confirmation would be sent to you shortly.".capitalized, font2: .systemFont(ofSize: 13), color1: UIColor.black.withAlphaComponent(0.9), color2: UIColor.darkGray.withAlphaComponent(0.9))
     // MARK: Attribute Text Generator
     static func returnAttributedText(string1: String, font1: UIFont, string2: String, font2: UIFont, color1: UIColor, color2: UIColor) -> NSMutableAttributedString {

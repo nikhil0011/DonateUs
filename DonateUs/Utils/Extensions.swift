@@ -123,3 +123,8 @@ extension String {
         return false
     }
 }
+extension UIViewController {
+    func present(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+}

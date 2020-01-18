@@ -26,10 +26,15 @@ class HomeViewController: UICollectionViewController {
                 ActivityIndicator.shared.hideProgressView()
             }
             if let err = error {
+                AlertController.showAlert(message: err, title: Constants.reqFailed) { _ in }
                 debugPrint("Error in Fetching Data From Chairty API \(err)")
                 return
             }
-            guard let data = response else { return }
+            guard let data = response, !data.data.isEmpty else {
+                let alert = AlertController.showAlert(message: Constants.noDataInList, title: Constants.reqFailed) { _ in }
+                reference.present(alert: alert)
+                return
+            }
             reference.response = data
             DispatchQueue.main.async {
                 reference.collectionView.reloadData()
