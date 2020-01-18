@@ -29,18 +29,20 @@ class PaymentSuccessViewController: UIViewController {
         button.addTarget(self, action: #selector(navigateToHome), for: .touchUpInside)
         return button
     }()
-    let infoLabel: UILabel = {
+    lazy var infoLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
         label.textAlignment = .center
-        label.text = "Payment Successfull!"
+        label.attributedText = self.returnAttributedText(string1: "Payment Successful", font1: .boldSystemFont(ofSize: 16), string2: "\n A email confirmation would be sent to you shortly.".capitalized, font2: .systemFont(ofSize: 13), color1: UIColor.black.withAlphaComponent(0.9), color2: UIColor.darkGray.withAlphaComponent(0.9))
         label.sizeToFit()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
         self.title = "Donation Confirmed"
         setupView()
     }
@@ -58,5 +60,10 @@ class PaymentSuccessViewController: UIViewController {
     }
     @objc func navigateToHome() {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    func returnAttributedText(string1: String, font1: UIFont, string2: String, font2: UIFont, color1: UIColor, color2: UIColor) -> NSMutableAttributedString {
+        let attributedLabel = NSMutableAttributedString(attributedString: NSAttributedString(string: string1, attributes: [.font: font1, .foregroundColor: color1]))
+        attributedLabel.append(NSAttributedString(string: "\(string2)", attributes: [.font: font2, .foregroundColor: color2]))
+        return attributedLabel
     }
 }

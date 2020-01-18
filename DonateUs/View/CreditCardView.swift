@@ -12,7 +12,8 @@ class CreditCardView: UIView {
     let cardNumber: UITextField = {
         let textField = BorderedTextField()
         textField.borderStyle = .none
-        textField.font = .boldSystemFont(ofSize: 12)
+        textField.textColor = UIColor.darkGray.withAlphaComponent(0.9)
+        textField.font = .boldSystemFont(ofSize: 14)
         textField.placeholder = "XXXX XXXX XXXX XXXX"
         textField.keyboardType = .numberPad
         textField.clearButtonMode = .whileEditing
@@ -21,9 +22,10 @@ class CreditCardView: UIView {
     }()
     let cvvNumber: UITextField = {
         let textField = BorderedTextField()
+        textField.textColor = UIColor.darkGray.withAlphaComponent(0.9)
         textField.borderStyle = .none
         textField.keyboardType = .numberPad
-        textField.font = .boldSystemFont(ofSize: 12)
+        textField.font = .boldSystemFont(ofSize: 14)
         textField.placeholder = "CVV (3-Digit Code)"
         textField.clearButtonMode = .whileEditing
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -32,8 +34,9 @@ class CreditCardView: UIView {
     let expiryNumber: UITextField = {
         let textField = BorderedTextField()
         textField.borderStyle = .none
-        textField.font = .boldSystemFont(ofSize: 12)
-        textField.placeholder = "MM/YY"
+        textField.textColor = UIColor.darkGray.withAlphaComponent(0.9)
+        textField.font = .boldSystemFont(ofSize: 14)
+        textField.placeholder = "Expiry (MM/YY)"
         textField.clearButtonMode = .whileEditing
         textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -42,8 +45,9 @@ class CreditCardView: UIView {
     let name: UITextField = {
         let textField = BorderedTextField()
         textField.borderStyle = .none
-        textField.font = .boldSystemFont(ofSize: 12)
+        textField.font = .boldSystemFont(ofSize: 14)
         textField.placeholder = "Name On Card"
+        textField.textColor = UIColor.darkGray.withAlphaComponent(0.9)
         textField.clearButtonMode = .whileEditing
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField

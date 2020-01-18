@@ -9,13 +9,24 @@ import UIKit
 fileprivate let sizeOfField: CGSize = .init(width: 0, height: 35)
 fileprivate let stdPadding: UIEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
 class DonationViewController: UIViewController {
+    let donationLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.textAlignment = .left
+        label.text = "Enter Donation Amount(in ฿)"
+        label.sizeToFit()
+        label.font = .boldSystemFont(ofSize: 14)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     let amount: UITextField = {
         let textField = BorderedTextField()
         textField.borderStyle = .none
         textField.keyboardType = .numberPad
         textField.clearButtonMode = .whileEditing
-        textField.font = .boldSystemFont(ofSize: 12)
-        textField.placeholder = "Enter Amount (in ฿)".uppercased()
+        textField.font = .boldSystemFont(ofSize: 15)
+        textField.placeholder = "Enter Amount(in ฿)".uppercased()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -51,13 +62,15 @@ class DonationViewController: UIViewController {
     }
     @objc func intiateDonate() {}
     func setupView() {
-        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
+        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.97)
+        self.view.addSubview(donationLabel)
         self.view.addSubview(amount)
         self.view.addSubview(intiateDonationButton)
         self.view.addSubview(creditCardForm)
         self.view.addSubview(donateButton)
         let frame = self.view.safeAreaLayoutGuide
-        amount.anchor(top: frame.topAnchor, leading: frame.leadingAnchor, bottom: nil, trailing: frame.trailingAnchor, padding: stdPadding, size: sizeOfField)
+        donationLabel.anchor(top: frame.topAnchor, leading: frame.leadingAnchor, bottom: nil, trailing: frame.trailingAnchor, padding: stdPadding)
+        amount.anchor(top: donationLabel.bottomAnchor, leading: frame.leadingAnchor, bottom: nil, trailing: frame.trailingAnchor, padding: stdPadding, size: sizeOfField)
         creditCardForm.anchor(top: amount.bottomAnchor, leading: frame.leadingAnchor, bottom: nil, trailing: frame.trailingAnchor, padding: stdPadding)
         donateButton.anchor(top: creditCardForm.bottomAnchor, leading: frame.leadingAnchor, bottom: nil, trailing: frame.trailingAnchor, padding: stdPadding, size: .init(width: 0, height: 45))
     }
