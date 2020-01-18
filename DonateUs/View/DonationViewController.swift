@@ -105,12 +105,12 @@ class DonationViewController: UIViewController {
     }
     func validateForm() -> Bool {
         let validations = Validations()
-        guard validations.isValidText(textfield: amount), let amt = amount.text, Int(amt) ?? 0 > 0 else {
+        guard validations.isValidText(text: amount.text!), let amt = amount.text, Int(amt) ?? 0 > 0 else {
             let alert = AlertController.showAlert(message: Constants.invalidAmt, title: Constants.alert) { (action) in }
             self.present(alert: alert)
             return false
         }
-        guard validations.isValidText(textfield: creditCardForm.name) else {
+        guard validations.isValidText(text: creditCardForm.name.text!) else {
             let alert = AlertController.showAlert(message: Constants.invalidName, title: Constants.alert) { (action) in }
             self.present(alert: alert)
             return false

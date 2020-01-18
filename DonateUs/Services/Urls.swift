@@ -15,15 +15,12 @@ struct EndPoints {
     }
 }
 class Validations {
-    func isValidText(textfield: UITextField) -> Bool {
-        guard let stringText = textfield.text, !stringText.isEmpty,
-            stringText.canBeConverted(to: .ascii) else {
-                return false
-        }
+    func isValidText(text: String) -> Bool {
+        guard !text.isBlank, text.canBeConverted(to: .ascii), !text.isSpecialCharExist()  else { return false }
         return true
     }
-    func isValidCVV(textField: UITextField) -> Bool {
-        guard textField.text!.count == 3 else { return false }
+    func isValidCVV(text: String) -> Bool {
+        guard text.count == 3, !text.isSpecialCharExist() else { return false }
         return true
     }
 }

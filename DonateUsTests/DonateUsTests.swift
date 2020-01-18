@@ -23,7 +23,16 @@ class DonateUsTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
+    func testFormValidations() {
+        let validations = Validations()
+        XCTAssertFalse(validations.isValidCVV(text: "9999"))
+        XCTAssertTrue(validations.isValidCVV(text: "999"))
+        XCTAssertFalse(validations.isValidCVV(text: "99.9"))
+        XCTAssertFalse(validations.isValidCVV(text: "---"))
+        XCTAssertFalse(validations.isValidText(text: "         "))
+        XCTAssertFalse(validations.isValidText(text: "-------------"))
+        XCTAssertTrue(validations.isValidText(text: "Nikhil Nangia"))
+    }
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
