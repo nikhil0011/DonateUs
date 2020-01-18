@@ -12,6 +12,8 @@ class DonationViewController: UIViewController {
     let amount: UITextField = {
         let textField = BorderedTextField()
         textField.borderStyle = .none
+        textField.keyboardType = .numberPad
+        textField.clearButtonMode = .whileEditing
         textField.font = .boldSystemFont(ofSize: 12)
         textField.placeholder = "Enter Amount (in ฿)".uppercased()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -43,10 +45,11 @@ class DonationViewController: UIViewController {
     lazy var creditCardForm = CreditCardView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Donate"
         donateButton.addTarget(self, action: #selector(submitDonationRequest), for: .touchUpInside)
         setupView()
     }
-    @objc func intiateDonate() { }
+    @objc func intiateDonate() {}
     func setupView() {
         self.view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
         self.view.addSubview(amount)
