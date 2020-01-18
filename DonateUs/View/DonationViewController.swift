@@ -15,7 +15,7 @@ class DonationViewController: UIViewController {
         label.textAlignment = .left
         label.text = "Enter Donation Amount(in ฿)"
         label.sizeToFit()
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = .boldSystemFont(ofSize: 15)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
