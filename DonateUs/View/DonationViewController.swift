@@ -56,13 +56,13 @@ class DonationViewController: UIViewController {
     lazy var creditCardForm = CreditCardView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.97)
         self.title = "Donate"
         donateButton.addTarget(self, action: #selector(submitDonationRequest), for: .touchUpInside)
         setupView()
     }
     @objc func intiateDonate() {}
     func setupView() {
-        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.97)
         self.view.addSubview(donationLabel)
         self.view.addSubview(amount)
         self.view.addSubview(intiateDonationButton)

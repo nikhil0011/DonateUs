@@ -16,11 +16,11 @@ struct EndPoints {
 }
 class Validations {
     func isValidText(text: String) -> Bool {
-        guard !text.isBlank, text.canBeConverted(to: .ascii), !text.isSpecialCharExist()  else { return false }
+        guard !text.isBlank, text.canBeConverted(to: .ascii), !text.doesSpecialCharExist()  else { return false }
         return true
     }
     func isValidCVV(text: String) -> Bool {
-        guard text.count == 3, !text.isSpecialCharExist() else { return false }
+        guard text.count == 3, !text.doesSpecialCharExist() else { return false }
         return true
     }
 }

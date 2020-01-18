@@ -118,7 +118,7 @@ extension String {
         let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
         return trimmed.isEmpty
     }
-    func isSpecialCharExist() -> Bool {
+    func doesSpecialCharExist() -> Bool {
         guard self.rangeOfCharacter(from:  Constants.nameRegex as CharacterSet) == nil else { return true }
         return false
     }

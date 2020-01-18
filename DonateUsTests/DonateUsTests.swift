@@ -28,6 +28,7 @@ class DonateUsTests: XCTestCase {
         XCTAssertFalse(validations.isValidCVV(text: "9999"))
         XCTAssertTrue(validations.isValidCVV(text: "999"))
         XCTAssertFalse(validations.isValidCVV(text: "99.9"))
+        XCTAssertFalse(validations.isValidCVV(text: "99VGHXBJSAKHGVSDBJKNQDBHKSV9---"))
         XCTAssertFalse(validations.isValidCVV(text: "---"))
         XCTAssertFalse(validations.isValidText(text: "         "))
         XCTAssertFalse(validations.isValidText(text: "-------------"))

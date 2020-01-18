@@ -110,7 +110,7 @@ extension CreditCardView: UITextFieldDelegate {
             return true
         case name:
             // MARK: Restrict special char in test field
-            if string.rangeOfCharacter(from:  Constants.nameRegex as CharacterSet) != nil { return false }
+            if string.rangeOfCharacter(from: Constants.nameRegex as CharacterSet) != nil { return false }
         default: return true
         }
         return true

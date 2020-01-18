@@ -29,4 +29,10 @@ class BorderedTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == "paste:" {
+            return false
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
 }
